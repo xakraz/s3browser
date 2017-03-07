@@ -23,10 +23,13 @@ if(!$config['s3-endpoint']){
     $config['s3-endpoint'] = 's3.amazonaws.com';
 }
 
-
+// Instanciate a S3Browser
 $s3b = new S3Browser($config['bucket-name'], $config['s3-access-key'],
                      $config['s3-secret-key'], $config['s3-ssl'], $config['s3-endpoint']);
 $s3b->enableCaching($config['cache-dir'], $config['cache-time']);
+
+// Set the default timezone
+date_default_timezone_set('Europe/Paris');
 
 // Get current directory from URL
 $dir = str_replace($config['base-path'], '', $_SERVER['REQUEST_URI']);
