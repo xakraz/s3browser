@@ -19,6 +19,9 @@ $c['page-header'] = getenv_default('PAGE_HEADER', 'My Amazon S3 files');
 // File size in bytes over which to serve files as torrents
 $c['torrent-threshold'] = getenv_default('TORRENT_THRESHOLD', null);
 
+// Direct download link on S3 or through the HTTP Proxy running Php
+$c['proxy-download'] = getenv_default('S3BROWSER_PROXY_DOWNLOAD', false);
+
 // Amazon S3 access information
 $c['s3-access-key'] = getenv_default('S3_ACCESS_KEY');
 $c['s3-secret-key'] = getenv_default('S3_SECRET_KEY');
