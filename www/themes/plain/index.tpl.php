@@ -146,6 +146,7 @@
     <? endif; ?>
     <? foreach ($files as $key => $info): ?>
       <? $asTorrent = (!is_null($config['torrent-threshold']) && $info['size'] > $config['torrent-threshold']); ?>
+      <? $useSignedUrl = (!is_null($config['s3-signed-url']) && $config['s3-signed-url']); ?>
       <li>
         <? if (is_array($info['files'])): ?>
           <a href="<?= $config['base-path'] ?>/<?= $info['path'] ?>">
@@ -158,7 +159,7 @@
             else: $url_prefix = $config['bucket-url-prefix'];
             endif;
           ?>
-          <a href="<?= $url_prefix ?>/<?= $info['path'] ?><? if ($asTorrent): ?>?torrent<? endif; ?>" <? if (isset($config['google-analytics-id'])): ?>onclick="javascript:pageTracker._trackPageview('<?= $info['path'] ?>');"<? endif; ?>>
+          <a href="<?= $url_prefix ?>/<?= $info['path'] ?><? if ($useSignedUrl): ?>?<?= $info['signature']  ?><? endif; ?>" <? if (isset($config['google-analytics-id'])): ?>onclick="javascript:pageTracker._trackPageview('<?= $info['path'] ?>');"<? endif; ?>>
           <img src="<?= $config['base-path'] ?>/themes/plain/img/file.gif">
           <span><?= $key ?></span>
         </a>

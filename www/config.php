@@ -22,6 +22,9 @@ $c['torrent-threshold'] = getenv_default('TORRENT_THRESHOLD', null);
 // Direct download link on S3 or through the HTTP Proxy running Php
 $c['proxy-download'] = getenv_default('S3BROWSER_PROXY_DOWNLOAD', false);
 
+// Use signed URL
+$c['s3-signed-url'] = getenv_default('S3_SIGNED_URL', false);
+
 // Amazon S3 access information
 $c['s3-access-key'] = getenv_default('S3_ACCESS_KEY');
 $c['s3-secret-key'] = getenv_default('S3_SECRET_KEY');
