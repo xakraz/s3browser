@@ -14,6 +14,6 @@ RUN a2enmod \
 COPY etc/apache2/sites-available/000-default.conf \
   /etc/apache2/sites-available/000-default.conf
 
-RUN echo "[[ 'true' == \"\${S3BROWSER_PROXY_DOWNLOAD}\" ]] && export APACHE_ARGUMENTS='-DS3Proxy' || echo '1'" >> /etc/apache2/envvars
+RUN echo "if [ 'true' = \"\${S3BROWSER_PROXY_DOWNLOAD}\" ]; then export APACHE_ARGUMENTS='-DS3Proxy'; fi;" >> /etc/apache2/envvars
 RUN sed -i 's/\(-DFOREGROUND\)/\1 ${APACHE_ARGUMENTS}/'  /usr/local/bin/apache2-foreground
 #CMD ["-DS3Proxy"]
