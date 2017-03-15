@@ -1,0 +1,23 @@
+---
+version: '2'
+
+services:
+  s3browser:
+    build: .
+    env_file: .env
+    ports:
+      - "80:80"
+    volumes:
+      - ./www:/srv/www/s3browser/www
+      - ./etc/apache2/sites-available:/etc/appache2/sites-enable
+
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.102.0.0/24
+          gateway: 10.102.0.1
