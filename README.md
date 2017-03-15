@@ -3,31 +3,15 @@ Amazon S3 Directory Browser
 
 Please report any issues [here on GitHub](https://github.com/powdahound/s3browser/issues).
 
-Installation on Heroku (preferred)
-----------------------------------
 
-1. Check out the latest release from GitHub:
+Configuration
+-------------
 
-        git clone git@github.com:powdahound/s3browser.git
-
-2. Assuming you already have the heroku toolkit set up, create an app:
-
-        heroku apps:create my-file-browser
-
-3. Set the necessary config values:
-
-        heroku config:set BUCKET_NAME=my-bucket
-        heroku config:set S3_ACCESS_KEY=xxx  # a key with access to perform a bucket object listing
-        heroku config:set S3_SECRET_KEY=xxx
-        heroku config:set PAGE_HEADER=X's Files
-
-4. Deploy to Heroku and load the site
-
-        git push heroku master
-        heroku open
+The app configures itself thanks to environment variables.
+The list of the supported variables are defined in the [config file](www/config.php).
 
 
-Installation on Apache
+Installation with Apache
 ----------------------
 
 1. Check out the latest release from GitHub:
@@ -53,3 +37,13 @@ Installation on Apache
 4. Reload your Apache config:
 
         sudo /etc/init.d/apache2 reload
+
+
+Docker integration
+-------------------
+
+1. Create a `.env` file with the configuration needed
+2. Install [`docker-compose`](https://docs.docker.com/compose/)
+3. Run `docker-compose up --build`
+
+Give a look at the [Dockerfile](Dockerfile) and [docker-compose.yml](docker-compose.yml) if needed.
