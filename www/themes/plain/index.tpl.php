@@ -155,8 +155,10 @@
           </a>
         <? else: ?>
           <?
-            if ($config['proxy-download']): $url_prefix = $config['base-path'];
-            else: $url_prefix = $config['bucket-url-prefix'];
+            if ($config['proxy-download']):
+              $url_prefix = $config['base-path'].'/proxy';
+            else:
+              $url_prefix = $config['bucket-url-prefix'];
             endif;
           ?>
           <a href="<?= $url_prefix ?>/<?= $info['path'] ?><? if ($useSignedUrl): ?>?<?= $info['signature']  ?><? endif; ?>" <? if (isset($config['google-analytics-id'])): ?>onclick="javascript:pageTracker._trackPageview('<?= $info['path'] ?>');"<? endif; ?>>
